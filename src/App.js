@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import SignInModal from "./components/SignInModal";
+import SignUpModal from "./components/SignUpModal";
+import Home from "./pages/Home";
+import Private from "./pages/Private/Private";
+import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SignInModal />
+      <SignUpModal />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/private" element={<Private />}>
+          <Route path="/private/home" element={<PrivateHome />}></Route>
+        </Route>
+      </Routes>
+    </>
   );
 }
 
